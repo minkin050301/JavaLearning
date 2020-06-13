@@ -22,7 +22,7 @@ public class Album {
         return SongList.findSongInSongList(title);
     }
 
-    public static class SongList {
+    private static class SongList {
         private static ArrayList<Song> songArrayList = new ArrayList<>();
 
         public static ArrayList<Song> getSongArrayList() {
