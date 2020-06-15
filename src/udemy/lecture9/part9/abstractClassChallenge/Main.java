@@ -10,5 +10,7 @@ public class Main {
         testList.addItem(new StringListItem("Elderly frog"));
         testList.addItem(new StringListItem("Markus"));
         testList.print();
+        testList.removeItem("Anna");
+        testList.print();
     }
 }
