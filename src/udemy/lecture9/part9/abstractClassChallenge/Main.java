@@ -10,8 +10,12 @@ public class Main {
         testList.addItem(new StringListItem("Elderly frog"));
         testList.addItem(new StringListItem("Markus"));
         testList.print();
-        System.out.println("");
-        testList.removeItem("sodisdsd");
+        System.out.println();
+        testList.removeItem("Anna");
+        testList.print();
+        System.out.println();
+        testList.addItem(new StringListItem("Anastasia"));
+        testList.addItem(new StringListItem("Zeus"));
         testList.print();
     }
 }
