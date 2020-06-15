@@ -1,7 +1,5 @@
 package udemy.lecture9.part9.abstractClassChallenge;
 
-import java.sql.SQLOutput;
-
 public class LinkedList {
     private StringListItem head;
     private StringListItem tail;
@@ -80,6 +78,6 @@ public class LinkedList {
             item = (StringListItem) item.getNextItem();
         }
 
-        System.out.println("Item not found");
+        System.out.println("Cannot remove. Item not found");
     }
 }
