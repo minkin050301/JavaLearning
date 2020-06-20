@@ -10,8 +10,13 @@ public class StringListItem extends ListItem {
         return compareStrings((String) this.getValue(), (String) listItem.getValue());
     }
 
+    @Override
+    public String toString() {
+        return (String) getValue();
+    }
+
     // the method compares two strings lexicographically, returns 0 if they are equal, a positive value if the first
-    // string comes before the second one, and a negative value if vice versa
+    // string is greater than (i.e. comes after) the second one, and a negative value if vice versa
     private int compareStrings(String str1, String str2) {
         // calculate which string is shorter and save its length
         int length1 = str1.length();
