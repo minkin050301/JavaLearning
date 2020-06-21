@@ -66,6 +66,86 @@ public class BinaryTree {
         return focusNode;
     }
 
+    public boolean remove(int key) {
+        Node focusNode = root;
+        Node parent = root;
+        boolean isItALeftChild = true;
+
+        while (focusNode.key != key) {
+            parent = focusNode;
+            if (key < focusNode.key) {
+                isItALeftChild = true;
+                focusNode = focusNode.leftChild;
+            } else {
+                isItALeftChild = false;
+                focusNode = focusNode.rightChild;
+            }
+
+            if (focusNode == null) {
+                return false;
+            }
+        }
+
+        if (focusNode.leftChild == null && focusNode.rightChild == null) {
+            if (focusNode == root) {
+                root = null;
+            } else if (isItALeftChild) {
+                parent.leftChild = null;
+            } else {
+                parent.rightChild = null;
+            }
+        } else if (focusNode.rightChild == null) {
+            if (focusNode == root) {
+                root = focusNode.leftChild;
+            } else if (isItALeftChild) {
+                parent.leftChild = focusNode.leftChild;
+            } else {
+                parent.rightChild = focusNode.leftChild;
+            }
+        } else if (focusNode.leftChild == null) {
+            if (focusNode == root) {
+                root = focusNode.rightChild;
+            } else if (isItALeftChild) {
+                parent.leftChild = focusNode.rightChild;
+            } else {
+                parent.rightChild = focusNode.rightChild;
+            }
+        } else {
+            Node replacement = getReplacementNode(focusNode);
+
+            if (focusNode == root) {
+                root = replacement;
+            } else if (isItALeftChild) {
+                parent.leftChild = replacement;
+            } else {
+                parent.rightChild = replacement;
+            }
+
+            replacement.leftChild = focusNode.leftChild;
+        }
+
+        return true;
+    }
+
+    public Node getReplacementNode(Node replacedNode) {
+        Node replacementParent = replacedNode;
+        Node replacement = replacedNode;
+        Node focusNode = replacedNode.rightChild;
+
+        while (focusNode != null) {
+            replacementParent = replacement;
+            replacement = focusNode;
+            focusNode = focusNode.leftChild;
+        }
+
+        if (replacement != replacedNode.rightChild) {
+            replacementParent.leftChild = replacement.rightChild;
+            replacement.rightChild = replacedNode.rightChild;
+        }
+
+        return replacement;
+    }
+
     public static void main(String[] args) {
         BinaryTree binaryTree = new BinaryTree();
         binaryTree.addNode(50, "Boss");
@@ -74,10 +154,12 @@ public class BinaryTree {
         binaryTree.addNode(30, "Secretary");
         binaryTree.addNode(75, "Sales Manager");
         binaryTree.addNode(85, "Salesman");
-
         binaryTree.inOrderTraverseTree(binaryTree.root);
-        binaryTree.preorderTraverseTree(binaryTree.root);
-        System.out.println(binaryTree.findNode(30));
+
+        System.out.println("-----------");
+        binaryTree.remove(25);
+        binaryTree.remove(85);
+        binaryTree.inOrderTraverseTree(binaryTree.root);
     }
 }
 

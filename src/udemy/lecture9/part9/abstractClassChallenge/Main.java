@@ -27,7 +27,5 @@ public class Main {
         binarySearchTree.addItem("Robert");
         binarySearchTree.addItem("Anna");
         binarySearchTree.inOrderTraverse(binarySearchTree.getRoot());
-
-
     }
 }
