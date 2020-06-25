@@ -3,13 +3,13 @@ package udemy.lecture10.generics.part2;
 import java.util.ArrayList;
 
 public class RankingTable<T extends Team<?>> {
-    private ArrayList<Team<?>> teams;
+    private ArrayList<T> teams;
 
     public RankingTable() {
         teams = new ArrayList<>();
     }
 
-    public ArrayList<Team<?>> getTeams() {
+    public ArrayList<T> getTeams() {
         return teams;
     }
 
