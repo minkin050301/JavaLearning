@@ -1,6 +1,6 @@
 package udemy.lecture9.part9.abstractClassChallenge;
 
-public class StringListItem extends ListItem {
+class StringListItem extends ListItem {
     public StringListItem(String value) {
         super(value);
     }
