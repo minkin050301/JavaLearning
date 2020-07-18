@@ -1,8 +1,6 @@
 package udemy.lecture12.collections.part20.sortedCollections;
 
-import java.util.Map;
-
-public class Main {
+public class MainChallenge {
     private static StockList stockList = new StockList();
 
     public static void main(String[] args) {
@@ -40,49 +38,21 @@ public class Main {
         stockList.addStock(temp);
 
         System.out.println(stockList);
+        System.out.println("=============");
 
-        for (String s : stockList.Items().keySet()) {
-            System.out.println(s);
-        }
-
-        Basket basket = new Basket("User228");
-        sellItem(basket, "car", 1);
+        Basket basket = new Basket("Marques");
+        StockItem item = stockList.get("vase");
+        basket.addToBasket(item, 10);
+        basket.addToBasket(stockList.get("phone"), 5);
         System.out.println(basket);
-
-        sellItem(basket, "car", 1);
-        System.out.println(basket);
-
-        sellItem(basket, "car", 1);
-        sellItem(basket, "spanner", 1);
-        System.out.println(basket);
-
-        sellItem(basket, "juice", 4);
-        sellItem(basket, "cup", 12);
-        sellItem(basket, "bread", 1);
-        System.out.println(basket);
+        System.out.println("--------------");
         System.out.println(stockList);
 
-        stockList.Items().get("car").adjustStock(2000);
-        stockList.get("car").adjustStock(-1000);
-
+        basket.unreserve(stockList.get("phone"), 4);
+        System.out.println(basket.unreserve(stockList.get("door")));
+        System.out.println(basket);
+        basket.checkout();
+        System.out.println(basket);
         System.out.println(stockList);
-
-        for (Map.Entry<String, Double> price : stockList.PriceList().entrySet()) {
-            System.out.println(price.getKey() + " costs " + price.getValue());
-        }
-    }
-
-    public static int sellItem(Basket basket, String item, int quantity) {
-        // retrieve the item from the stock list
-        StockItem stockItem = stockList.get(item);
-        if (stockItem == null) {
-            System.out.println("We don't sell " + item);
-            return 0;
-        }
-        if (stockList.sellStock(item, quantity) != 0) {
-            basket.addToBasket(stockItem, quantity);
-            return quantity;
-        }
-        return 0;
     }
 }
