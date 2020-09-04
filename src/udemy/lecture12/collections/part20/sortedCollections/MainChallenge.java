@@ -48,7 +48,7 @@ public class MainChallenge {
         System.out.println("--------------");
         System.out.println(stockList);
 
-        basket.unreserve(stockList.get("phone"), 4);
+        basket.unreserve(stockList.get("phone"), 5);
         System.out.println(basket.unreserve(stockList.get("door")));
         System.out.println(basket);
         basket.checkout();
